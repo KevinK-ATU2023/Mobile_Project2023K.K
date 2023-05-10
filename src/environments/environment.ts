@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  api_key: "916a65aefe47434da8b174028230805",
-  base_url: "http://api.weatherapi.com/v1"
+  api_key: "1257a30638dd5014e06b9a45071186ca",
+  base_url: "https://api.themoviedb.org/3",
+  posters: "http://image.tmdb.org/t/p",
 };
 
 /*

@@ -76,7 +76,6 @@ export class HomePage implements OnInit {
         this.tv = data.results;
         this.hidden_movie = true;
         this.hidden_tv = false;
-        console.log(this.tv);
       });
     }
   }
@@ -93,5 +92,7 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward("/popular-tv");
   }
   
-  
+  open_top_tv() {
+    this.navCtrl.navigateForward("/top-tv");
+  }
 }

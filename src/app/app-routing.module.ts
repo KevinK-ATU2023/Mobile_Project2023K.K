@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'popular-tv',
     loadChildren: () => import('./popular-tv/popular-tv.module').then( m => m.PopularTvPageModule)
   },
+  {
+    path: 'top-tv',
+    loadChildren: () => import('./top-tv/top-tv.module').then( m => m.TopTvPageModule)
+  },
 
 
 

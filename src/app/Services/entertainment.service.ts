@@ -19,6 +19,14 @@ export class EntertainmentService {
     return this.http.get(`${environment.base_url}/search/tv?api_key=${environment.api_key}&language=en-US&query=${query}&page=1&include_adult=false`);
   }
 
+  get_movie_info(id: any):Observable<any> {
+    return this.http.get(`${environment.base_url}/movie/${id}?api_key=${environment.api_key}&language=en-US&page=1`);
+  }
+
+  get_tv_info(id: any):Observable<any> {
+    return this.http.get(`${environment.base_url}/tv/${id}?api_key=${environment.api_key}&language=en-US&page=1`);
+  }
+
   get_popular_movies():Observable<any> {
     return this.http.get(`${environment.base_url}/movie/popular?api_key=${environment.api_key}&language=en-US&page=1`);
   }

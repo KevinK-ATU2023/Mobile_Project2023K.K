@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-back-button slot="start"></ion-back-button>
-    <ion-title>Most Popular TV-Series</ion-title>
+    <ion-title>Top Rated TV-Series</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,6 +17,9 @@
       <ion-card-subtitle class="movie_info">Release date: {{x.first_air_date | date: 'd/M/y'}}</ion-card-subtitle>
       <ion-card-subtitle class="movie_info">Movie Rating: {{x.vote_average}}/10</ion-card-subtitle>
     </ion-card-header>
+    <ion-button class="favourite_button" color="black" size="medium">
+      <ion-icon name="star-outline"></ion-icon>
+    </ion-button>
   </ion-card>
 
 </ion-content>

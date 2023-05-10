@@ -22,4 +22,12 @@ export class EntertainmentService {
   get_top_movies():Observable<any> {
     return this.http.get(`${environment.base_url}/movie/top_rated?api_key=${environment.api_key}&language=en-US&page=1`);
   }
+
+  get_popular_tv():Observable<any> {
+    return this.http.get(`${environment.base_url}/tv/popular?api_key=${environment.api_key}&language=en-US&page=1`);
+  }
+
+  get_top_tv():Observable<any> {
+    return this.http.get(`${environment.base_url}/tv/top_rated?api_key=${environment.api_key}&language=en-US&page=1`);
+  }
 }

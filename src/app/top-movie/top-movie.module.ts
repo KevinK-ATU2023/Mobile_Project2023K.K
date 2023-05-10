@@ -8,12 +8,15 @@ import { TopMoviePageRoutingModule } from './top-movie-routing.module';
 
 import { TopMoviePage } from './top-movie.page';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TopMoviePageRoutingModule
+    TopMoviePageRoutingModule,
+    HttpClientModule
   ],
   declarations: [TopMoviePage]
 })

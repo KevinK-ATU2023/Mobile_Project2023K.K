@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EntertainmentService } from '../Services/entertainment.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-top-movie',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopMoviePage implements OnInit {
 
-  constructor() { }
+  constructor(private entertainService: EntertainmentService) { }
 
-  ngOnInit() {
+  movie: any = [];
+  movie_poster = environment.posters;
+
+  ngOnInit(): void {
+    this.entertainService.get_top_movies().subscribe(data => {
+      this.movie = data.results;
+    });
   }
 
 }

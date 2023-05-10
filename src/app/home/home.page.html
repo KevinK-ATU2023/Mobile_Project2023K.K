@@ -13,7 +13,7 @@
         <ion-button fill="clear" size="medium" (click)="open_popular_movies()">Movie: Popular</ion-button>
       </ion-item>
       <ion-item class="menu-list">
-        <ion-button fill="clear" size="medium">Movie: Top Rated</ion-button>
+        <ion-button fill="clear" size="medium" (click)="open_top_movies()">Movie: Top Rated</ion-button>
       </ion-item>
       <ion-item class="menu-list">
         <ion-button fill="clear" size="medium">TV-Series: Popular</ion-button>
@@ -39,7 +39,7 @@
   <ion-content>
 
     <ion-item>
-      <ion-input placeholder="Search Movie or TV" [clearInput]="true" value="jumanji"></ion-input>
+      <ion-input placeholder="Search Movie or TV" [clearInput]="true"></ion-input>
       <ion-button>
         <ion-icon name="search-sharp"></ion-icon>
       </ion-button>

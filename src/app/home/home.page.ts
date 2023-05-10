@@ -88,6 +88,10 @@ export class HomePage implements OnInit {
   open_top_movies(){
     this.navCtrl.navigateForward("/top-movie");
   }
+
+  open_popular_tv() {
+    this.navCtrl.navigateForward("/popular-tv");
+  }
   
   
 }

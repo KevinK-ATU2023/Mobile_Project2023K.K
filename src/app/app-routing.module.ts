@@ -10,14 +10,20 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'popular-movie',
     loadChildren: () => import('./popular-movie/popular-movie.module').then( m => m.PopularMoviePageModule)
   },
   {
     path: 'top-movie',
     loadChildren: () => import('./top-movie/top-movie.module').then( m => m.TopMoviePageModule)
+  },  {
+    path: 'popular-tv',
+    loadChildren: () => import('./popular-tv/popular-tv.module').then( m => m.PopularTvPageModule)
   },
+
+
 
 
 ];

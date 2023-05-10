@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Most Popular TV Series</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let x of tv">
+    <img [src]="tv_poster + '/w400' + x.poster_path"/>
+    <ion-card-header>
+      <ion-card-title class="movie_title">{{x.name}}</ion-card-title>
+      <div class="hr"></div>
+      <ion-card-subtitle class="movie_desc">{{x.overview}}</ion-card-subtitle>
+      <div class="hr"></div>
+      <ion-card-subtitle class="movie_info">Release date: {{x.first_air_date | date: 'd/M/y'}}</ion-card-subtitle>
+      <ion-card-subtitle class="movie_info">Movie Rating: {{x.vote_average}}/10</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

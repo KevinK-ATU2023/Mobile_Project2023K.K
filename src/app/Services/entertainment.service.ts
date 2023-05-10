@@ -28,10 +28,11 @@ export class EntertainmentService {
   }
 
   get_popular_tv():Observable<any> {
-    return this.http.get(`${environment.base_url}/tv/popular?api_key=${environment.api_key}&language=en-US&page=1`);
+    return this.http.get(`${environment.base_url}/tv/popular?api_key=${environment.api_key}&language=en-US&page=2`);
   }
 
   get_top_tv():Observable<any> {
     return this.http.get(`${environment.base_url}/tv/top_rated?api_key=${environment.api_key}&language=en-US&page=1`);
   }
+  
 }

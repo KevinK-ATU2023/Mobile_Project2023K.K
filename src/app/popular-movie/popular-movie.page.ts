@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntertainmentService } from '../Services/entertainment.service';
 import { environment } from 'src/environments/environment';
 import { log } from 'console';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-popular-movie',
@@ -10,7 +11,7 @@ import { log } from 'console';
 })
 export class PopularMoviePage implements OnInit {
 
-  constructor(private entertainService: EntertainmentService) { }
+  constructor(private navCtrl: NavController, private entertainService: EntertainmentService) { }
 
   movie: any = [];
   movie_poster = environment.posters;
@@ -20,6 +21,10 @@ export class PopularMoviePage implements OnInit {
       this.movie = data.results;
       console.log(this.movie);
     });
-}
+  }
+
+  open_search() {
+    this.navCtrl.navigateForward("/home");
+  }
 
 }

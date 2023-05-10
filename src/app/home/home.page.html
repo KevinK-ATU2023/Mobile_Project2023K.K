@@ -7,9 +7,6 @@
   <ion-content>
     <ion-list>
       <ion-item class="menu-list">
-        <ion-button fill="clear" size="medium">Home</ion-button>
-      </ion-item>
-      <ion-item class="menu-list">
         <ion-button fill="clear" size="medium" (click)="open_popular_movies()">Movie: Popular</ion-button>
       </ion-item>
       <ion-item class="menu-list">
@@ -39,26 +36,40 @@
   <ion-content>
 
     <ion-item>
-      <ion-input placeholder="Search Movie or TV" [clearInput]="true"></ion-input>
-      <ion-button>
+      <ion-input placeholder={{input_placeholder}} [clearInput]="true" inputmode="text" [(ngModel)]="user_search"></ion-input>
+      <ion-toggle (ionChange)="toggle_movie_tv()" color="medium"></ion-toggle>
+      <ion-button class="search_button" color="black" size="medium" (click)="search_button_click()">
         <ion-icon name="search-sharp"></ion-icon>
       </ion-button>
     </ion-item>
 
-    <ion-card *ngFor="let x of movie">
-      
-      <img [src]="movie_poster + '/w400' + x.poster_path"/>
-      
-      <ion-card-header>
-        <ion-card-title class="movie_title">{{x.title}}</ion-card-title>
-        <div class="hr"></div>
-        <ion-card-subtitle class="movie_desc">{{x.overview}}</ion-card-subtitle>
-        <div class="hr"></div>
-        <ion-card-subtitle class="movie_info">Release date: {{x.release_date | date: 'd/M/y'}}</ion-card-subtitle>
-        <ion-card-subtitle class="movie_info">Movie Rating: {{x.vote_average}}/10</ion-card-subtitle>
-      </ion-card-header>
+    <div *ngIf="hidden_movie === false">
+      <ion-card *ngFor="let x of movie">
+        <img [src]="poster + '/w400' + x.poster_path"/>
+        <ion-card-header>
+          <ion-card-title class="movie_title">{{x.title}}</ion-card-title>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_desc">{{x.overview}}</ion-card-subtitle>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_info">Release date: {{x.release_date | date: 'd/M/y'}}</ion-card-subtitle>
+          <ion-card-subtitle class="movie_info">Movie Rating: {{x.vote_average}}/10</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </div>
 
-    </ion-card>
+    <div *ngIf="hidden_tv === false">
+      <ion-card *ngFor="let y of tv">
+        <img [src]="poster + '/w400' + y.poster_path"/>
+        <ion-card-header>
+          <ion-card-title class="movie_title">{{y.name}}</ion-card-title>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_desc">{{y.overview}}</ion-card-subtitle>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_info">Release date: {{y.first_air_date | date: 'd/M/y'}}</ion-card-subtitle>
+          <ion-card-subtitle class="movie_info">Movie Rating: {{y.vote_average}}/10</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </div>
 
   </ion-content>
 

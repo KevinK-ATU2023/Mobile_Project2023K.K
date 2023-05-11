@@ -5,12 +5,11 @@ import { log } from 'console';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-search',
+  templateUrl: './search.page.html',
+  styleUrls: ['./search.page.scss'],
 })
-
-export class HomePage implements OnInit {
+export class SearchPage implements OnInit {
 
   constructor(private navCtrl: NavController,private entertainService: EntertainmentService) {}
 
@@ -95,4 +94,5 @@ export class HomePage implements OnInit {
   open_top_tv() {
     this.navCtrl.navigateForward("/top-tv");
   }
+
 }

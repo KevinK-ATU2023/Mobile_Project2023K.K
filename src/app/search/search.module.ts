@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TopTvPageRoutingModule } from './top-tv-routing.module';
+import { SearchPageRoutingModule } from './search-routing.module';
 
-import { TopTvPage } from './top-tv.page';
-
+import { SearchPage } from './search.page';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -15,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     IonicModule,
-    TopTvPageRoutingModule,
+    SearchPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [TopTvPage]
+  declarations: [SearchPage]
 })
-export class TopTvPageModule {}
+export class SearchPageModule {}

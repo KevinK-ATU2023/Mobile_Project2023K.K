@@ -22,57 +22,56 @@
   </ion-content>
 </ion-menu>
 
-  
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button slot="start"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Welcome, {{user_first_name}} {{user_last_name}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button slot="start"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Welcome, {{user_first_name}} {{user_last_name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
+    <ion-item>
+      <ion-input placeholder={{input_placeholder}} [clearInput]="true" inputmode="text" [(ngModel)]="user_search"></ion-input>
+      <ion-toggle (ionChange)="toggle_movie_tv()" color="medium"></ion-toggle>
+      <ion-button class="search_button" color="black" size="medium" (click)="search_button_click()">
+        <ion-icon name="search-sharp"></ion-icon>
+      </ion-button>
+    </ion-item>
 
-  <ion-item>
-    <ion-input placeholder={{input_placeholder}} [clearInput]="true" inputmode="text" [(ngModel)]="user_search"></ion-input>
-    <ion-toggle (ionChange)="toggle_movie_tv()" color="medium"></ion-toggle>
-    <ion-button class="search_button" color="black" size="medium" (click)="search_button_click()">
-      <ion-icon name="search-sharp"></ion-icon>
-    </ion-button>
-  </ion-item>
+    <div *ngIf="hidden_movie === false">
+      <ion-card *ngFor="let x of movie">
+        <img src="http://image.tmdb.org/t/p/w400/{{x.poster_path}}"/>
+        <ion-card-header>
+          <ion-card-title class="movie_title">{{x.title}}</ion-card-title>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_desc">{{x.overview}}</ion-card-subtitle>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_info">Release date: {{x.release_date | date: 'd/M/y'}}</ion-card-subtitle>
+          <ion-card-subtitle class="movie_info">Movie Rating: {{x.vote_average}}/10</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </div>
 
-  <div *ngIf="hidden_movie === false">
-    <ion-card *ngFor="let x of movie">
-      <img src="http://image.tmdb.org/t/p/w400/{{x.poster_path}}"/>
-      <ion-card-header>
-        <ion-card-title class="movie_title">{{x.title}}</ion-card-title>
-        <div class="hr"></div>
-        <ion-card-subtitle class="movie_desc">{{x.overview}}</ion-card-subtitle>
-        <div class="hr"></div>
-        <ion-card-subtitle class="movie_info">Release date: {{x.release_date | date: 'd/M/y'}}</ion-card-subtitle>
-        <ion-card-subtitle class="movie_info">Movie Rating: {{x.vote_average}}/10</ion-card-subtitle>
-      </ion-card-header>
-    </ion-card>
-  </div>
+    <div *ngIf="hidden_tv === false">
+      <ion-card *ngFor="let y of tv">
+        <img src="http://image.tmdb.org/t/p/w400/{{y.poster_path}}"/>
+        <ion-card-header>
+          <ion-card-title class="movie_title">{{y.name}}</ion-card-title>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_desc">{{y.overview}}</ion-card-subtitle>
+          <div class="hr"></div>
+          <ion-card-subtitle class="movie_info">First Air date: {{y.first_air_date | date: 'd/M/y'}}</ion-card-subtitle>
+          <ion-card-subtitle class="movie_info">Series Rating: {{y.vote_average}}/10</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </ion-content>
 
-  <div *ngIf="hidden_tv === false">
-    <ion-card *ngFor="let y of tv">
-      <img src="http://image.tmdb.org/t/p/w400/{{y.poster_path}}"/>
-      <ion-card-header>
-        <ion-card-title class="movie_title">{{y.name}}</ion-card-title>
-        <div class="hr"></div>
-        <ion-card-subtitle class="movie_desc">{{y.overview}}</ion-card-subtitle>
-        <div class="hr"></div>
-        <ion-card-subtitle class="movie_info">First Air date: {{y.first_air_date | date: 'd/M/y'}}</ion-card-subtitle>
-        <ion-card-subtitle class="movie_info">Series Rating: {{y.vote_average}}/10</ion-card-subtitle>
-      </ion-card-header>
-    </ion-card>
-  </div>
-
-</ion-content>
-
-<ion-footer>
-  <ion-button (click)="open_in_browser()" expand="full">Open the TMDB website</ion-button>
-</ion-footer>
+  <ion-footer>
+    <ion-button (click)="open_in_browser()" expand="full">Open the TMDB website</ion-button>
+  </ion-footer>
+</div>
 

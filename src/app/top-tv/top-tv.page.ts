@@ -12,15 +12,17 @@ export class TopTvPage implements OnInit {
 
   constructor(private entertainService: EntertainmentService) { }
   
+  // tv details array 
   tv: any = [];
-  tv_id: string = "";
 
+  // set the tv variable as the results of the api return
   ngOnInit(): void {
     this.entertainService.get_top_tv().subscribe(data => {
       this.tv = data.results;
     });
   }
 
+  // go to the top rated tv-series page in browser
   async open_in_browser(){
     await Browser.open({url: "https://www.themoviedb.org/tv/top-rated"});
   }

@@ -15,23 +15,30 @@ export class SearchPage implements OnInit {
 
   constructor(private storage:Storage, private navCtrl: NavController, private entertainService: EntertainmentService) {}
 
+  // user name variables
   user_first_name: string = "";
   user_last_name: string = "";
 
+  // movie and tv show details array 
   movie: any = [];
   tv: any = [];
 
+  // hide movie or tv variables
   hidden_movie: any = [];
   hidden_tv: any = [];
 
+  // search placeholder
   input_placeholder: string = "";
 
+  // toggle boolean variables
   movie_search_toggle: boolean = true;
   tv_search_toggle: boolean = false;
   
+  // input variable 
   user_search: any = "";
 
   ngOnInit(): void {
+    // change placeholder based on what mode it's on
     if (this.movie_search_toggle) {
       this.input_placeholder = "Search Movie";
     }
@@ -42,9 +49,11 @@ export class SearchPage implements OnInit {
   }
 
   toggle_movie_tv() {
+    // change boolean variables based on what side the toggle is on
     this.movie_search_toggle = !this.movie_search_toggle;
     this.tv_search_toggle = !this.tv_search_toggle;
 
+    // show what mode it's on in console
     if (this.movie_search_toggle) {
       console.log("movie search activated");
     }
@@ -58,6 +67,7 @@ export class SearchPage implements OnInit {
       console.log("tv search deactivated");
     }
 
+    // placeholder change
     if (this.movie_search_toggle) {
       this.input_placeholder = "Search Movie";
     }
@@ -67,6 +77,7 @@ export class SearchPage implements OnInit {
   }
 
   search_button_click() {
+    // get tv or movie details based on what mode it's on
     if (this.movie_search_toggle) {
       this.entertainService.search_movies(this.user_search).subscribe(data => {
         this.movie = data.results;
@@ -83,6 +94,7 @@ export class SearchPage implements OnInit {
     }
   }
 
+  // gets the user's full name
   async get_user_name() {
     await this.storage.create();
     this.user_first_name = await this.storage.get('first_name');
@@ -91,22 +103,22 @@ export class SearchPage implements OnInit {
 
   open_popular_movies(){
     this.navCtrl.navigateForward("/popular-movie");
-  }
+  } // go to popular movies page
 
   open_top_movies(){
     this.navCtrl.navigateForward("/top-movie");
-  }
+  } // go to top movies page
 
   open_popular_tv() {
     this.navCtrl.navigateForward("/popular-tv");
-  }
+  } // go to popular tv-series page
   
   open_top_tv() {
     this.navCtrl.navigateForward("/top-tv");
-  }
+  } // go to top tv-series page
 
   async open_in_browser(){
     await Browser.open({url: "https://www.themoviedb.org/"});
-  }
+  } // open the api's homepage
 
 }

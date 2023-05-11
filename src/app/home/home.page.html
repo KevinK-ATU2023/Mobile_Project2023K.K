@@ -22,6 +22,7 @@
   <ion-button color="light" (click)="sign_up()">Enter Application</ion-button>
   <br>
   <br>
+  <!-- Appears when the input boxes have a value in them -->
   <ion-item *ngIf="user_first_input === '' || user_last_input === ''">
     {{enter_message}}
   </ion-item>

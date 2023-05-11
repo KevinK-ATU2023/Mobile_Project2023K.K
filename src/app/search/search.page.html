@@ -1,3 +1,4 @@
+<!-- Menu options, appears when the user presses the menu button in the header -->
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
@@ -28,6 +29,7 @@
       <ion-buttons slot="start">
         <ion-menu-button slot="start"></ion-menu-button>
       </ion-buttons>
+      <!-- displays user first and last name and a welcome message -->
       <ion-title>Welcome, {{user_first_name}} {{user_last_name}}</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -40,7 +42,8 @@
         <ion-icon name="search-sharp"></ion-icon>
       </ion-button>
     </ion-item>
-
+    
+    <!-- if the toggle is movie sided, then show the movie results -->
     <div *ngIf="hidden_movie === false">
       <ion-card *ngFor="let x of movie">
         <img src="http://image.tmdb.org/t/p/w400/{{x.poster_path}}"/>
@@ -55,6 +58,7 @@
       </ion-card>
     </div>
 
+    <!-- if the toggle is tv sided, then show the tv results -->
     <div *ngIf="hidden_tv === false">
       <ion-card *ngFor="let y of tv">
         <img src="http://image.tmdb.org/t/p/w400/{{y.poster_path}}"/>
@@ -70,6 +74,7 @@
     </div>
   </ion-content>
 
+  <!-- button which opens the home page of the api -->
   <ion-footer>
     <ion-button (click)="open_in_browser()" expand="full">Open the TMDB website</ion-button>
   </ion-footer>

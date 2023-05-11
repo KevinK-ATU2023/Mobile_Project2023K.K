@@ -7,6 +7,7 @@
 
 <ion-content>
 
+  <!-- tv cards display tv details -->
   <ion-card *ngFor="let x of tv">
     <img src="http://image.tmdb.org/t/p/w400/{{x.poster_path}}"/>
     <ion-card-header>
@@ -21,6 +22,7 @@
 
 </ion-content>
 
+<!-- button that opens the page in browser -->
 <ion-footer>
   <ion-button (click)="open_in_browser()" expand="full">Open in TMDB Website</ion-button>
 </ion-footer>

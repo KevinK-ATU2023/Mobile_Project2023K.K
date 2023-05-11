@@ -12,11 +12,14 @@ export class HomePage {
 
   constructor(private navCtrl: NavController, private storage:Storage) {}
 
+  //user input variables
   user_first_input: string = "";
   user_last_input: string = "";
 
+  // instructions string
   enter_message: string = "Please enter a username and password";
 
+  // creates storage and goes to the next page when the user enters their name
   async sign_up() {
     if (this.user_first_input != "" && this.user_last_input != "") {
       await this.storage.create();
@@ -28,5 +31,5 @@ export class HomePage {
 
   open_search_page() {
     this.navCtrl.navigateForward("/search");
-  }
+  } // go to the search page
 }

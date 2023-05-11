@@ -7,10 +7,10 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let x of tv" id="tv_show">
-    <img [src]="tv_poster + '/w400' + x.poster_path"/>
+  <ion-card *ngFor="let x of tv">
+    <img src="http://image.tmdb.org/t/p/w400/{{x.poster_path}}"/>
     <ion-card-header>
-      <ion-card-title id="movie_name" class="movie_title">{{x.name}}</ion-card-title>
+      <ion-card-title class="movie_title">{{x.name}}</ion-card-title>
       <div class="hr"></div>
       <ion-card-subtitle class="movie_desc">{{x.overview}}</ion-card-subtitle>
       <div class="hr"></div>
@@ -20,3 +20,7 @@
   </ion-card>
 
 </ion-content>
+
+<ion-footer>
+    <ion-button (click)="open_in_browser()" expand="full">Open in TMDB Website</ion-button>
+</ion-footer>

@@ -1,13 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>search</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Log in</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">search</ion-title>
+      <ion-title size="large">Log in</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-input [(ngModel)]="user_first_input" placeholder="Enter your first name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="user_last_input" placeholder="Enter your last name"></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-button color="light" (click)="sign_up()">Enter Application</ion-button>
+  <br>
+  <br>
+  <ion-item *ngIf="user_first_input === '' || user_last_input === ''">
+    {{enter_message}}
+  </ion-item>
+
 </ion-content>

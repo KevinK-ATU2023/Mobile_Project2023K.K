@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { EntertainmentService } from '../Services/entertainment.service';
+import { Browser } from '@capacitor/browser';
 
 
 @Component({
@@ -13,12 +14,15 @@ export class PopularTvPage implements OnInit {
   constructor(private entertainService: EntertainmentService) { }
 
   tv: any = [];
-  tv_poster = environment.posters;
 
   ngOnInit(): void {
     this.entertainService.get_popular_tv().subscribe(data => {
       this.tv = data.results;
     });
+  }
+
+  async open_in_browser(){
+    await Browser.open({url: "https://www.themoviedb.org/tv"});
   }
 
 }

@@ -12,35 +12,27 @@ export class EntertainmentService {
   constructor(private http:HttpClient) { }
 
   search_movies(query: any):Observable<any> {
-    return this.http.get(`${environment.base_url}/search/movie?api_key=${environment.api_key}&language=en-US&query=${query}&page=1&include_adult=false`);
+    return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=1257a30638dd5014e06b9a45071186ca&language=en-US&query=${query}&page=1&include_adult=false`);
   }
 
   search_tv(query: any):Observable<any> {
-    return this.http.get(`${environment.base_url}/search/tv?api_key=${environment.api_key}&language=en-US&query=${query}&page=1&include_adult=false`);
-  }
-
-  get_movie_info(id: any):Observable<any> {
-    return this.http.get(`${environment.base_url}/movie/${id}?api_key=${environment.api_key}&language=en-US&page=1`);
-  }
-
-  get_tv_info(id: any):Observable<any> {
-    return this.http.get(`${environment.base_url}/tv/${id}?api_key=${environment.api_key}&language=en-US&page=1`);
+    return this.http.get(`https://api.themoviedb.org/3/search/tv?api_key=1257a30638dd5014e06b9a45071186ca&language=en-US&query=${query}&page=1&include_adult=false`);
   }
 
   get_popular_movies():Observable<any> {
-    return this.http.get(`${environment.base_url}/movie/popular?api_key=${environment.api_key}&language=en-US&page=1`);
+    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=1257a30638dd5014e06b9a45071186ca&language=en-US&page=1`);
   }
 
   get_top_movies():Observable<any> {
-    return this.http.get(`${environment.base_url}/movie/top_rated?api_key=${environment.api_key}&language=en-US&page=1`);
+    return this.http.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=1257a30638dd5014e06b9a45071186ca&language=en-US&page=1`);
   }
 
   get_popular_tv():Observable<any> {
-    return this.http.get(`${environment.base_url}/tv/popular?api_key=${environment.api_key}&language=en-US&page=2`);
+    return this.http.get(`https://api.themoviedb.org/3/tv/popular?api_key=1257a30638dd5014e06b9a45071186ca&language=en-US&page=2`);
   }
 
   get_top_tv():Observable<any> {
-    return this.http.get(`${environment.base_url}/tv/top_rated?api_key=${environment.api_key}&language=en-US&page=1`);
+    return this.http.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=1257a30638dd5014e06b9a45071186ca&language=en-US&page=1`);
   }
   
 }

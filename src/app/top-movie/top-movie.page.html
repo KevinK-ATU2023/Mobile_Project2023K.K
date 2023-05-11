@@ -9,7 +9,7 @@
 
   <ion-card *ngFor="let x of movie">
     
-    <img [src]="movie_poster + '/w400' + x.poster_path"/>
+    <img src="http://image.tmdb.org/t/p/w400/{{x.poster_path}}"/>
     
     <ion-card-header>
       <ion-card-title class="movie_title">{{x.title}}</ion-card-title>
@@ -23,3 +23,7 @@
   </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-button (click)="open_in_browser()" expand="full">Open in TMDB Website</ion-button>
+</ion-footer>

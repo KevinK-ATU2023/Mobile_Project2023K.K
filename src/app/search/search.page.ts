@@ -1,8 +1,10 @@
 import { Component, OnInit,} from '@angular/core';
 import { EntertainmentService } from '../Services/entertainment.service';
 import { environment } from 'src/environments/environment';
+import { Storage } from '@ionic/storage-angular';
 import { log } from 'console';
 import { NavController } from '@ionic/angular';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +13,10 @@ import { NavController } from '@ionic/angular';
 })
 export class SearchPage implements OnInit {
 
-  constructor(private navCtrl: NavController,private entertainService: EntertainmentService) {}
+  constructor(private storage:Storage, private navCtrl: NavController, private entertainService: EntertainmentService) {}
+
+  user_first_name: string = "";
+  user_last_name: string = "";
 
   movie: any = [];
   tv: any = [];
@@ -23,8 +28,6 @@ export class SearchPage implements OnInit {
 
   movie_search_toggle: boolean = true;
   tv_search_toggle: boolean = false;
-
-  poster = environment.posters;
   
   user_search: any = "";
 
@@ -35,6 +38,7 @@ export class SearchPage implements OnInit {
     if (this.tv_search_toggle) {
       this.input_placeholder = "Search TV";
     }
+    this.get_user_name();
   }
 
   toggle_movie_tv() {
@@ -79,6 +83,12 @@ export class SearchPage implements OnInit {
     }
   }
 
+  async get_user_name() {
+    await this.storage.create();
+    this.user_first_name = await this.storage.get('first_name');
+    this.user_last_name = await this.storage.get('last_name');
+  }
+
   open_popular_movies(){
     this.navCtrl.navigateForward("/popular-movie");
   }
@@ -93,6 +103,10 @@ export class SearchPage implements OnInit {
   
   open_top_tv() {
     this.navCtrl.navigateForward("/top-tv");
+  }
+
+  async open_in_browser(){
+    await Browser.open({url: "https://www.themoviedb.org/"});
   }
 
 }

@@ -1,8 +1,6 @@
-import { Component, OnInit,} from '@angular/core';
-import { EntertainmentService } from '../Services/entertainment.service';
-import { environment } from 'src/environments/environment';
-import { log } from 'console';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -10,89 +8,25 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 
-export class HomePage implements OnInit {
+export class HomePage {
 
-  constructor(private navCtrl: NavController,private entertainService: EntertainmentService) {}
+  constructor(private navCtrl: NavController, private storage:Storage) {}
 
-  movie: any = [];
-  tv: any = [];
+  user_first_input: string = "";
+  user_last_input: string = "";
 
-  hidden_movie: any = [];
-  hidden_tv: any = [];
+  enter_message: string = "Please enter a username and password";
 
-  input_placeholder: string = "";
-
-  movie_search_toggle: boolean = true;
-  tv_search_toggle: boolean = false;
-
-  poster = environment.posters;
-  
-  user_search: any = "";
-
-  ngOnInit(): void {
-    if (this.movie_search_toggle) {
-      this.input_placeholder = "Search Movie";
-    }
-    if (this.tv_search_toggle) {
-      this.input_placeholder = "Search TV";
+  async sign_up() {
+    if (this.user_first_input != "" && this.user_last_input != "") {
+      await this.storage.create();
+      await this.storage.set("first_name", this.user_first_input);
+      await this.storage.set("last_name", this.user_last_input);
+      this.open_search_page();
     }
   }
 
-  toggle_movie_tv() {
-    this.movie_search_toggle = !this.movie_search_toggle;
-    this.tv_search_toggle = !this.tv_search_toggle;
-
-    if (this.movie_search_toggle) {
-      console.log("movie search activated");
-    }
-    else {
-      console.log("movie search deactivated");
-    }
-    if (this.tv_search_toggle) {
-      console.log("tv search activated");
-    }
-    else {
-      console.log("tv search deactivated");
-    }
-
-    if (this.movie_search_toggle) {
-      this.input_placeholder = "Search Movie";
-    }
-    if (this.tv_search_toggle) {
-      this.input_placeholder = "Search TV";
-    }
-  }
-
-  search_button_click() {
-    if (this.movie_search_toggle) {
-      this.entertainService.search_movies(this.user_search).subscribe(data => {
-        this.movie = data.results;
-        this.hidden_movie = false;
-        this.hidden_tv = true;
-      });
-    }
-    if (this.tv_search_toggle) {
-      this.entertainService.search_tv(this.user_search).subscribe(data => {
-        this.tv = data.results;
-        this.hidden_movie = true;
-        this.hidden_tv = false;
-      });
-    }
-  }
-
-  open_popular_movies(){
-    this.navCtrl.navigateForward("/popular-movie");
-  }
-
-  open_top_movies(){
-    this.navCtrl.navigateForward("/top-movie");
-  }
-
-  open_popular_tv() {
-    this.navCtrl.navigateForward("/popular-tv");
-  }
-  
-  open_top_tv() {
-    this.navCtrl.navigateForward("/top-tv");
+  open_search_page() {
+    this.navCtrl.navigateForward("/search");
   }
 }
